@@ -1,0 +1,25 @@
+﻿@model Mtg.RaymondDev.Models.Home.HomeVM
+
+<h1>Sets</h1>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Release Date</th>
+    </tr>
+    @foreach (var set in Model.Sets)
+    {
+        <tr>
+            <td><a href="@Url.Action("SetDetails", "Sets", new { id = set.Id })">@set.Id</a></td>
+            <td>@set.Name</td>
+            <td>@set.ReleaseDate.ToString("dd-MM-yyyy")</td>
+        </tr>
+    }
+</table>
+
+<style> 
+    td {
+        padding-right: 20px;
+    }
+</style>

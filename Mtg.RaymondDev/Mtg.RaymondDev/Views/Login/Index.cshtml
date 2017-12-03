@@ -1,0 +1,39 @@
+﻿@model Mtg.RaymondDev.Models.Login.LoginVM
+
+<div class="row">
+    <h1>Login</h1>
+</div>
+@if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+{
+    <div class="row error-message">
+        @Model.ErrorMessage
+    </div>
+}
+@using (Html.BeginForm("Login", "Login"))
+{
+    <div class="row">
+        <span>Username</span>
+    </div>
+    <div class="row">
+        @Html.EditorFor(m => m.UserName)
+    </div>
+    <div class="row">
+        <span>Password</span>
+    </div>
+    <div class="row">
+        @Html.PasswordFor(m => m.Password)
+    </div>
+    <div class="row">
+        <input type="submit" value="Login" />
+    </div>
+}
+
+<style>
+    input {
+        margin-bottom: 5px;
+    }
+
+    .error-message {
+        color: red;
+    }
+</style>

@@ -1,0 +1,29 @@
+﻿@model Mtg.RaymondDev.Models.Sets.SetsVM
+
+<h2>@Model.Name</h2>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Manacost</th>
+        <th>Type</th>
+        <th>Add to collection</th>
+    </tr>
+    @foreach (var card in Model.Cards)
+    {
+        <tr>
+            <td>@card.Id</td>
+            <td>@card.Name</td>
+            <td>@card.ManaCost</td>
+            <td>@card.Type</td>
+            <td><a href="@Url.Action("AddToCollection", new { id = card.Id })">@card.Name</a></td>
+        </tr>
+    }
+</table>
+
+<style>
+    td {
+        padding-right: 20px;
+    }
+</style>
