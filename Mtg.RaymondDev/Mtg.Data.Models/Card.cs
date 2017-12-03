@@ -232,5 +232,7 @@ namespace Mtg.Data.Models
         /// this is which theme deck the card is from. For clash packs, this is which deck it is from.
         /// </summary>
         public string Source { get; set; }
+
+        public ICollection<Collection> Collections { get; set; }
     }
 }
