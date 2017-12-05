@@ -1,0 +1,55 @@
+﻿@model Mtg.RaymondDev.Models.Collection.CardVM
+
+@{
+    ViewBag.Title = "CardDetails";
+}
+
+<h2>Edit card details</h2>
+
+@using (Html.BeginForm("SaveCardDetails", "Collection"))
+{
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.Name)
+    @Html.HiddenFor(m => m.Set)
+    @Html.HiddenFor(m => m.IsNew)
+
+    <div class="row">
+        <div class="col-lg-3">
+            <span>Card</span>
+        </div>
+        <div class="col-lg-4">
+            @Model.Name
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <span>Set</span>
+        </div>
+        <div class="col-lg-4">
+            @Model.Set
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <span>Amount</span>
+        </div>
+        <div class="col-lg-4">
+            @Html.EditorFor(m => m.Amount)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-4">
+            <input type="submit" value="Save" />
+        </div>
+    </div>
+}
+
+<style>
+    .row {
+        margin-bottom: 5px;
+    }
+</style>

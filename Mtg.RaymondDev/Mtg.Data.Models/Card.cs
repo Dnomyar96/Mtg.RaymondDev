@@ -250,5 +250,7 @@ namespace Mtg.Data.Models
         public string Source { get; set; }
 
         public virtual ICollection<CollectionCard> Collections { get; set; }
+
+        public virtual Set Set { get; set; }
     }
 }

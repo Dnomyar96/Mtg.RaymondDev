@@ -11,6 +11,12 @@ namespace Mtg.RaymondDev.Models.Collection
 
         public string Name { get; set; }
 
+        public string Set { get; set; }
+
+        public int SetId { get; set; }
+
         public int Amount { get; set; }
+
+        public bool IsNew { get; set; }
     }
 }

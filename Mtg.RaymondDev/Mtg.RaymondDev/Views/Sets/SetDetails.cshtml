@@ -19,7 +19,7 @@
             <td>@card.ManaCost</td>
             <td>@card.Type</td>
             <td>@card.Rarity</td>
-            <td><a href="@Url.Action("AddCardToCollection", "Collection", new { cardId = card.Id })">@card.Name</a></td>
+            <td><a href="@Url.Action("EditCardDetails", "Collection", new { id = card.Id })">@card.Name</a></td>
         </tr>
     }
 </table>
