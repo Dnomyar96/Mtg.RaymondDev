@@ -9,6 +9,11 @@ namespace Mtg.Data.Models
 {
     public class Set
     {
+        public Set()
+        {
+            Cards = new List<Card>();
+        }
+
         public int Id { get; set; }
 
         /// <summary>

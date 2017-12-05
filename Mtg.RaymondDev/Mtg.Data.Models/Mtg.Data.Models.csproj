@@ -49,7 +49,9 @@
   <ItemGroup>
     <Compile Include="Card.cs" />
     <Compile Include="Collection.cs" />
+    <Compile Include="CollectionCard.cs" />
     <Compile Include="Enums\Border.cs" />
+    <Compile Include="Enums\CollectionType.cs" />
     <Compile Include="Enums\SetType.cs" />
     <Compile Include="ForeignName.cs" />
     <Compile Include="Legality.cs" />

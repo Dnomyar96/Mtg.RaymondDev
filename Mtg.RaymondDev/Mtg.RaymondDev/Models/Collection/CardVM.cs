@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Mtg.RaymondDev.Models.Sets
+namespace Mtg.RaymondDev.Models.Collection
 {
     public class CardVM
     {
@@ -11,10 +11,6 @@ namespace Mtg.RaymondDev.Models.Sets
 
         public string Name { get; set; }
 
-        public string Type { get; set; }
-
-        public string ManaCost { get; set; }
-
-        public string Rarity { get; set; }
+        public int Amount { get; set; }
     }
 }

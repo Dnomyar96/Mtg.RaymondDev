@@ -9,6 +9,22 @@ namespace Mtg.Data.Models
 {
     public class Card
     {
+        public Card()
+        {
+            Names = new List<string>();
+            Colors = new List<string>();
+            ColorIdentity = new List<string>();
+            SuperTypes = new List<string>();
+            Types = new List<string>();
+            SubTypes = new List<string>();
+            Variations = new List<int>();
+            Rulings = new List<Ruling>();
+            ForeignNames = new List<ForeignName>();
+            Printings = new List<string>();
+            Legalities = new List<Legality>();
+            Collections = new List<CollectionCard>();
+        }
+
         public int Id { get; set; }
 
         /// <summary>
@@ -233,6 +249,6 @@ namespace Mtg.Data.Models
         /// </summary>
         public string Source { get; set; }
 
-        public ICollection<Collection> Collections { get; set; }
+        public virtual ICollection<CollectionCard> Collections { get; set; }
     }
 }

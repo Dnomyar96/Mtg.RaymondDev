@@ -8,6 +8,7 @@
         <th>Name</th>
         <th>Manacost</th>
         <th>Type</th>
+        <th>Rarity</th>
         <th>Add to collection</th>
     </tr>
     @foreach (var card in Model.Cards)
@@ -17,7 +18,8 @@
             <td>@card.Name</td>
             <td>@card.ManaCost</td>
             <td>@card.Type</td>
-            <td><a href="@Url.Action("AddToCollection", new { id = card.Id })">@card.Name</a></td>
+            <td>@card.Rarity</td>
+            <td><a href="@Url.Action("AddCardToCollection", "Collection", new { cardId = card.Id })">@card.Name</a></td>
         </tr>
     }
 </table>

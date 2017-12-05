@@ -8,7 +8,7 @@ namespace Mtg.Data.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Cards",
+                "Cards",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -43,11 +43,11 @@ namespace Mtg.Data.Migrations
                         Set_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Sets", t => t.Set_Id)
+                .ForeignKey("Sets", t => t.Set_Id)
                 .Index(t => t.Set_Id);
             
             CreateTable(
-                "dbo.ForeignNames",
+                "ForeignNames",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -57,11 +57,11 @@ namespace Mtg.Data.Migrations
                         Card_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Cards", t => t.Card_Id)
+                .ForeignKey("Cards", t => t.Card_Id)
                 .Index(t => t.Card_Id);
             
             CreateTable(
-                "dbo.Legalities",
+                "Legalities",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -70,11 +70,11 @@ namespace Mtg.Data.Migrations
                         Card_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Cards", t => t.Card_Id)
+                .ForeignKey("Cards", t => t.Card_Id)
                 .Index(t => t.Card_Id);
             
             CreateTable(
-                "dbo.Rulings",
+                "Rulings",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -83,11 +83,11 @@ namespace Mtg.Data.Migrations
                         Card_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Cards", t => t.Card_Id)
+                .ForeignKey("Cards", t => t.Card_Id)
                 .Index(t => t.Card_Id);
             
             CreateTable(
-                "dbo.Sets",
+                "Sets",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -108,19 +108,19 @@ namespace Mtg.Data.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Cards", "Set_Id", "dbo.Sets");
-            DropForeignKey("dbo.Rulings", "Card_Id", "dbo.Cards");
-            DropForeignKey("dbo.Legalities", "Card_Id", "dbo.Cards");
-            DropForeignKey("dbo.ForeignNames", "Card_Id", "dbo.Cards");
-            DropIndex("dbo.Rulings", new[] { "Card_Id" });
-            DropIndex("dbo.Legalities", new[] { "Card_Id" });
-            DropIndex("dbo.ForeignNames", new[] { "Card_Id" });
-            DropIndex("dbo.Cards", new[] { "Set_Id" });
-            DropTable("dbo.Sets");
-            DropTable("dbo.Rulings");
-            DropTable("dbo.Legalities");
-            DropTable("dbo.ForeignNames");
-            DropTable("dbo.Cards");
+            DropForeignKey("Cards", "Set_Id", "Sets");
+            DropForeignKey("Rulings", "Card_Id", "Cards");
+            DropForeignKey("Legalities", "Card_Id", "Cards");
+            DropForeignKey("ForeignNames", "Card_Id", "Cards");
+            DropIndex("Rulings", new[] { "Card_Id" });
+            DropIndex("Legalities", new[] { "Card_Id" });
+            DropIndex("ForeignNames", new[] { "Card_Id" });
+            DropIndex("Cards", new[] { "Set_Id" });
+            DropTable("Sets");
+            DropTable("Rulings");
+            DropTable("Legalities");
+            DropTable("ForeignNames");
+            DropTable("Cards");
         }
     }
 }

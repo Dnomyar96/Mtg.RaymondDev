@@ -90,6 +90,10 @@
     <Compile Include="Migrations\201712031519594_Collection.Designer.cs">
       <DependentUpon>201712031519594_Collection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712050958589_CollectionCard.cs" />
+    <Compile Include="Migrations\201712050958589_CollectionCard.Designer.cs">
+      <DependentUpon>201712050958589_CollectionCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -112,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712031519594_Collection.resx">
       <DependentUpon>201712031519594_Collection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712050958589_CollectionCard.resx">
+      <DependentUpon>201712050958589_CollectionCard.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

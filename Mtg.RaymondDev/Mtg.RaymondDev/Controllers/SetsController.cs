@@ -27,7 +27,8 @@ namespace Mtg.RaymondDev.Controllers
                     Id = c.Id,
                     Name = c.Name,
                     ManaCost = c.ManaCost,
-                    Type = c.Type
+                    Type = c.Type,
+                    Rarity = c.Rarity
                 }).ToList();
             }
 

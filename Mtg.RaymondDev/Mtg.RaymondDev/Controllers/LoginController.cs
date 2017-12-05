@@ -26,15 +26,15 @@ namespace Mtg.RaymondDev.Controllers
                 if (user == null || !HashHelper.Verify(vm.Password, user.Password))
                     return View("Index", new LoginVM { ErrorMessage = "Invalid combination of username and password" });
 
-                CurrentUser.SetCurrentUser(user);
+                UserHelper.SetCurrentUser(user);
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Collection");
             }
         }
 
         public ActionResult Logout()
         {
-            CurrentUser.ClearCurrentUser();
+            UserHelper.ClearCurrentUser();
 
             return RedirectToAction("Index");
         }

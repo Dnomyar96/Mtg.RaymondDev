@@ -8,7 +8,7 @@ namespace Mtg.Data.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Users",
+                "Users",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -21,7 +21,7 @@ namespace Mtg.Data.Migrations
         
         public override void Down()
         {
-            DropTable("dbo.Users");
+            DropTable("Users");
         }
     }
 }

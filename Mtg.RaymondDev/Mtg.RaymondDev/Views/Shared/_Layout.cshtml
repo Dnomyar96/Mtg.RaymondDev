@@ -30,7 +30,7 @@
                     }
                     else
                     {
-                        <li><a>@(((Mtg.RaymondDev.Helpers.CurrentUser)HttpContext.Current.Session["currentUser"]).UserName)</a></li>
+                        <li>@Html.ActionLink(((Mtg.RaymondDev.Helpers.UserHelper)HttpContext.Current.Session["currentUser"]).UserName, "Index", "Collection")</li>
                         <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
                     }
                 </ul>

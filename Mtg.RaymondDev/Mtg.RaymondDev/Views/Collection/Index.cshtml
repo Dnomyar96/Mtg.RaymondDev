@@ -1,0 +1,32 @@
+﻿@model Mtg.RaymondDev.Models.Collection.CollectionVM
+
+@{
+    ViewBag.Title = "Collection";
+}
+
+<h2>Collection</h2>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Amount</th>
+    </tr>
+    @if (Model.Cards != null && Model.Cards.Count() > 0)
+    {
+        foreach (var card in Model.Cards)
+        {
+            <tr>
+                <td>@card.Id</td>
+                <td>@card.Name</td>
+                <td>@card.Amount</td>
+            </tr>
+        }
+    }
+</table>
+
+<style>
+    td, th {
+        padding-right: 20px;
+    }
+</style>
