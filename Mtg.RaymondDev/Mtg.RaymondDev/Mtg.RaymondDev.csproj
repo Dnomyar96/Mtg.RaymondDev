@@ -173,6 +173,7 @@
     <Compile Include="Helpers\HashHelper.cs" />
     <Compile Include="Models\Collection\CardVM.cs" />
     <Compile Include="Models\Collection\CollectionVM.cs" />
+    <Compile Include="Models\Collection\StatsVM.cs" />
     <Compile Include="Models\Home\HomeVM.cs" />
     <Compile Include="Models\Home\SetVM.cs" />
     <Compile Include="Models\Login\LoginVM.cs" />

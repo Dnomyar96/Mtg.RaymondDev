@@ -6,40 +6,71 @@
 
 <h2>Collection</h2>
 
-<p>@Model.CardCount cards in collection</p>
-
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Set</th>
-        <th>Amount</th>
-    </tr>
-    @if (Model.Cards != null && Model.Cards.Count() > 0)
-    {
-        foreach (var card in Model.Cards)
-        {
+<div style="display: inline-block">
+    <div class="border-bottom">
+        <p>
+            @Model.CardCount cards in collection<br/>
+            @Model.UniqueCardCount unique cards in collection
+        </p>
+        <table>
             <tr>
-                <td>
-                    @Html.ActionLink(card.Id.ToString(), "EditCardDetails", new { id = card.Id })
-                </td>
-                <td>@card.Name</td>
-                <td>
-                    @Html.ActionLink(card.Set, "SetDetails", "Sets", new { id = card.SetId }, new { })
-                </td>
-                <td>@card.Amount</td>
-                <td>
-                    <a href="@Url.Action("DeleteCard", "Collection", new { id = card.Id })" onclick="return confirm('Are you sure you want to delete this card from your collection?');" >
-                        <i class="fa fa-trash-o"></i>
-                    </a>
-                </td>
+                <th>Set</th>
+                <th>Amount</th>
+                <th>Unique amount</th>
             </tr>
+            @foreach (var stat in Model.Stats)
+            {
+                <tr>
+                    <td>@stat.Set</td>
+                    <td>@stat.Amount</td>
+                    <td>@stat.UniqueAmount</td>
+            </tr>
+            }
+        </table>
+    </div>
+    <div class="row">
+        &nbsp;
+    </div>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Set</th>
+            <th>Amount</th>
+        </tr>
+        @if (Model.Cards != null && Model.Cards.Count() > 0)
+        {
+            foreach (var card in Model.Cards)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(card.Id.ToString(), "EditCardDetails", new { id = card.Id })
+                    </td>
+                    <td>@card.Name</td>
+                    <td>
+                        @Html.ActionLink(card.Set, "SetDetails", "Sets", new { id = card.SetId }, new { })
+                    </td>
+                    <td>@card.Amount</td>
+                    <td>
+                        <a href="@Url.Action("DeleteCard", "Collection", new { id = card.Id })" onclick="return confirm('Are you sure you want to delete this card from your collection?');">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
         }
-    }
-</table>
+    </table>
+</div>
 
 <style>
     td, th {
         padding-right: 20px;
+    }
+
+    .border-bottom {
+        border: 1px solid black;
+        padding: 5px;
+        display: inline-block;
     }
 </style>

@@ -33,7 +33,8 @@ namespace Mtg.RaymondDev.Controllers
 
                 var model = new CollectionVM
                 {
-                    CardCount = collection.Cards.Sum(c => c.Amount)
+                    CardCount = collection.Cards.Sum(c => c.Amount),
+                    UniqueCardCount = collection.Cards.Count
                 };
 
                 if (collection.Cards != null && collection.Cards.Count > 0)
@@ -46,6 +47,13 @@ namespace Mtg.RaymondDev.Controllers
                         SetId = c.Card.Set.Id,
                         Amount = c.Amount
                     }).ToList();
+
+                    model.Stats = collection.Cards.GroupBy(c => c.Card.Set).Select(s => new StatsVM
+                    {
+                        Set = s.Key.Name,
+                        Amount = s.Sum(c => c.Amount),
+                        UniqueAmount = s.Count()
+                    }).OrderByDescending(m => m.Amount);
                 }
 
                 return View(model);
