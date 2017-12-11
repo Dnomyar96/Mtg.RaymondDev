@@ -1,0 +1,15 @@
+﻿@model Mtg.RaymondDev.Models.Sets.CardVM
+
+<tr>
+    <td>@Model.Id</td>
+    <td>@Model.Name</td>
+    <td>@Model.ManaCost</td>
+    <td>@Model.Type</td>
+    <td>@Model.Rarity</td>
+    <td><a href="@Url.Action("EditCardDetails", "Collection", new { id = Model.Id })">@Model.Name</a></td>
+    <td>
+        @Html.HiddenFor(m => Model.Id)
+        @Html.HiddenFor(m => Model.Name)
+        @Html.EditorFor(m => Model.AmountToAdd)
+    </td>
+</tr>

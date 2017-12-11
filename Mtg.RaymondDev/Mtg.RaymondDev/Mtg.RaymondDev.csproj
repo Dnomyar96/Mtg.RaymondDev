@@ -257,6 +257,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Collection\Index.cshtml" />
     <Content Include="Views\Collection\CardDetails.cshtml" />
+    <Content Include="Views\Sets\EditorTemplates\CardVM.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

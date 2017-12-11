@@ -2,27 +2,54 @@
 
 <h2>@Model.Name</h2>
 
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Manacost</th>
-        <th>Type</th>
-        <th>Rarity</th>
-        <th>Add to collection</th>
-    </tr>
-    @foreach (var card in Model.Cards)
-    {
+<div class="row">
+    <div class="col-lg-2">
+        Filter by color:
+    </div>
+    <div class="col-lg-1">
+        @Html.ActionLink("Black", "SetDetails", new { id = Model.Id, filterColor = "black", orderByRarity = true })
+    </div>
+    <div class="col-lg-1">
+        @Html.ActionLink("White", "SetDetails", new { id = Model.Id, filterColor = "white", orderByRarity = true })
+    </div>
+    <div class="col-lg-1">
+        @Html.ActionLink("Blue", "SetDetails", new { id = Model.Id, filterColor = "blue", orderByRarity = true })
+    </div>
+    <div class="col-lg-1">
+        @Html.ActionLink("Green", "SetDetails", new { id = Model.Id, filterColor = "green", orderByRarity = true })
+    </div>
+    <div class="col-lg-1">
+        @Html.ActionLink("Red", "SetDetails", new { id = Model.Id, filterColor = "red", orderByRarity = true })
+    </div>
+</div>
+<div class="row">&nbsp;</div>
+
+@using (Html.BeginForm("AddCardsToCollection", "Collection"))
+{
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.Name)
+
+    <table>
         <tr>
-            <td>@card.Id</td>
-            <td>@card.Name</td>
-            <td>@card.ManaCost</td>
-            <td>@card.Type</td>
-            <td>@card.Rarity</td>
-            <td><a href="@Url.Action("EditCardDetails", "Collection", new { id = card.Id })">@card.Name</a></td>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Manacost</th>
+            <th>Type</th>
+            <th>Rarity</th>
+            <th>Add to collection</th>
         </tr>
-    }
-</table>
+        @Html.EditorFor(m => m.Cards)
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+}
 
 <style>
     td {

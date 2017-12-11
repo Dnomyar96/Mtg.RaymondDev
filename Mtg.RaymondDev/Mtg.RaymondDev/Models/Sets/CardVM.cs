@@ -16,5 +16,10 @@ namespace Mtg.RaymondDev.Models.Sets
         public string ManaCost { get; set; }
 
         public string Rarity { get; set; }
+
+        /// <summary>
+        /// Temporarily added to make adding large quantities of cards to a collection easier
+        /// </summary>
+        public int AmountToAdd { get; set; }
     }
 }

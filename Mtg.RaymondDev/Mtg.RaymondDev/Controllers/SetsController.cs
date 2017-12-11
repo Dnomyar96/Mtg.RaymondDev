@@ -10,9 +10,9 @@ namespace Mtg.RaymondDev.Controllers
 {
     public class SetsController : Controller
     {
-        public ActionResult SetDetails(int id)
+        public ActionResult SetDetails(int id, string filterColor = "", bool orderByRarity = false)
         {
-            var model = new SetsVM();
+            var model = new SetsVM { Id = id };
 
             using(var context = new Context())
             {
@@ -28,9 +28,37 @@ namespace Mtg.RaymondDev.Controllers
                     Name = c.Name,
                     ManaCost = c.ManaCost,
                     Type = c.Type,
-                    Rarity = c.Rarity
+                    Rarity = c.Rarity,
+                    AmountToAdd = 0
                 }).ToList();
             }
+
+            if (!string.IsNullOrWhiteSpace(filterColor))
+            {
+                switch (filterColor)
+                {
+                    case "black":
+                        model.Cards = model.Cards.Where(c => c.ManaCost != null && c.ManaCost.Contains("B"));
+                        break;
+                    case "white":
+                        model.Cards = model.Cards.Where(c => c.ManaCost != null && c.ManaCost.Contains("W"));
+                        break;
+                    case "blue":
+                        model.Cards = model.Cards.Where(c => c.ManaCost != null && c.ManaCost.Contains("U"));
+                        break;
+                    case "green":
+                        model.Cards = model.Cards.Where(c => c.ManaCost != null && c.ManaCost.Contains("G"));
+                        break;
+                    case "red":
+                        model.Cards = model.Cards.Where(c => c.ManaCost != null && c.ManaCost.Contains("R"));
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (orderByRarity)
+                model.Cards = model.Cards.OrderBy(c => c.Name).OrderBy(c => c.Rarity);
 
             return View("SetDetails", model);
         }

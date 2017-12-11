@@ -20,7 +20,8 @@ namespace Mtg.RaymondDev.Controllers
                 {
                     Id = s.Id,
                     Name = s.Name,
-                    ReleaseDate = s.ReleaseDate
+                    ReleaseDate = s.ReleaseDate,
+                    SetCode = s.Code,
                 }).ToList().OrderByDescending(s => s.ReleaseDate);
 
                 model.Sets = sets;

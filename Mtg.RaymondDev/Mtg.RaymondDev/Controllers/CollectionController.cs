@@ -140,6 +140,41 @@ namespace Mtg.RaymondDev.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult AddCardsToCollection(Models.Sets.SetsVM model)
+        {
+            using (var context = new Context())
+            {
+                var collection = _getCollection(context);
+
+                foreach(var card in model.Cards)
+                {
+                    if (card.AmountToAdd > 0)
+                    {
+                        if (collection.Cards.Any(c => c.Card.Id == card.Id))
+                        {
+                            collection.Cards.Single(c => c.Card.Id == card.Id).Amount += card.AmountToAdd;
+                        }
+                        else
+                        {
+                            var dbCard = context.Cards.SingleOrDefault(c => c.Id == card.Id);
+
+                            collection.Cards.Add(new CollectionCard
+                            {
+                                Collection = collection,
+                                Card = dbCard,
+                                Amount = card.AmountToAdd
+                            });
+                        }
+                    }
+                }
+
+                context.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+        }
+
         private Collection _getCollection(Context context)
         {
             var user = UserHelper.GetCurrentDbUser(context);

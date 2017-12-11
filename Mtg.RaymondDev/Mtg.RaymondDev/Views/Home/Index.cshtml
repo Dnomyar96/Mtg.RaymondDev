@@ -5,6 +5,7 @@
 <table>
     <tr>
         <th>Id</th>
+        <th>Icon</th>
         <th>Name</th>
         <th>Release Date</th>
     </tr>
@@ -12,6 +13,7 @@
     {
         <tr>
             <td><a href="@Url.Action("SetDetails", "Sets", new { id = set.Id })">@set.Id</a></td>
+            <td><i class="ss ss-@set.SetCode.ToLowerInvariant()"></i></td>
             <td>@set.Name</td>
             <td>@set.ReleaseDate.ToString("dd-MM-yyyy")</td>
         </tr>
@@ -21,5 +23,9 @@
 <style> 
     td {
         padding-right: 20px;
+    }
+
+    .ss {
+        font-size: 20px;
     }
 </style>
