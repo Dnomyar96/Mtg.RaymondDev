@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A4DF6A39-3AF2-4ABE-93BF-B4983302D2FE}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mtg.Data.Models</RootNamespace>
-    <AssemblyName>Mtg.Data.Models</AssemblyName>
+    <ProjectGuid>{FC2D0584-4A39-4669-A6F2-98866FDEBE7B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Mtg.Data.PricingSyncronizer</RootNamespace>
+    <AssemblyName>Mtg.Data.PricingSyncronizer</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -36,6 +38,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.6.7.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.6.7\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -47,23 +52,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Card.cs" />
-    <Compile Include="CardPricing.cs" />
-    <Compile Include="Collection.cs" />
-    <Compile Include="CollectionCard.cs" />
-    <Compile Include="Enums\Border.cs" />
-    <Compile Include="Enums\CollectionType.cs" />
-    <Compile Include="Enums\SetType.cs" />
-    <Compile Include="ForeignName.cs" />
-    <Compile Include="Legality.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ruling.cs" />
-    <Compile Include="Set.cs" />
-    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mtg.Data.Models\Mtg.Data.Models.csproj">
+      <Project>{A4DF6A39-3AF2-4ABE-93BF-B4983302D2FE}</Project>
+      <Name>Mtg.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mtg.Data\Mtg.Data.csproj">
+      <Project>{c38a38aa-f4fe-4e5e-a968-55975530bb68}</Project>
+      <Name>Mtg.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

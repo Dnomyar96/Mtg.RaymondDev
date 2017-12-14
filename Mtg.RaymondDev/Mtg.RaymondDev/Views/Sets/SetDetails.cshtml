@@ -21,6 +21,12 @@
     <div class="col-lg-1">
         @Html.ActionLink("Red", "SetDetails", new { id = Model.Id, filterColor = "red", orderByRarity = true })
     </div>
+    <div class="col-lg-1">
+        @Html.ActionLink("Colorless", "SetDetails", new { id = Model.Id, filterColor = "neutral", orderByRarity = true })
+    </div>
+    <div class="col-lg-2">
+        @Html.ActionLink("Multi colored", "SetDetails", new { id = Model.Id, filterColor = "multi", orderByRarity = true })
+    </div>
 </div>
 <div class="row">&nbsp;</div>
 

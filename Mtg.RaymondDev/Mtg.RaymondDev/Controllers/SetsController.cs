@@ -52,6 +52,14 @@ namespace Mtg.RaymondDev.Controllers
                     case "red":
                         model.Cards = model.Cards.Where(c => c.ManaCost != null && c.ManaCost.Contains("R"));
                         break;
+                    case "neutral":
+                        model.Cards = model.Cards.Where(c => c.ManaCost == null || (!c.ManaCost.Contains("B") 
+                        && !c.ManaCost.Contains("W") && !c.ManaCost.Contains("U") && !c.ManaCost.Contains("G") 
+                        && !c.ManaCost.Contains("R")));
+                        break;
+                    case "multi":
+                        model.Cards = model.Cards.Where(c => _cardIsMultiColored(c));
+                        break;
                     default:
                         break;
                 }
@@ -61,6 +69,21 @@ namespace Mtg.RaymondDev.Controllers
                 model.Cards = model.Cards.OrderBy(c => c.Name).OrderBy(c => c.Rarity);
 
             return View("SetDetails", model);
+        }
+
+        private bool _cardIsMultiColored(CardVM card)
+        {
+            if (card.ManaCost != null 
+                && ((card.ManaCost.Contains("B}{") && !card.ManaCost.Contains("B}{B}")) 
+                || (card.ManaCost.Contains("W}{") && !card.ManaCost.Contains("W}{W}")) 
+                || (card.ManaCost.Contains("U}{") && !card.ManaCost.Contains("U}{U}")) 
+                || (card.ManaCost.Contains("G}{") && !card.ManaCost.Contains("G}{G}"))
+                || (card.ManaCost.Contains("R}{") && !card.ManaCost.Contains("R}{R}"))))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
