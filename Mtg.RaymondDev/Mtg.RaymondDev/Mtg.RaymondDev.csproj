@@ -162,6 +162,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CardsController.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -171,6 +172,11 @@
     </Compile>
     <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Helpers\HashHelper.cs" />
+    <Compile Include="Models\Cards\CardsVM.cs" />
+    <Compile Include="Models\Cards\CardVM.cs" />
+    <Compile Include="Models\Cards\SetVM.cs" />
+    <Compile Include="Models\Cards\SetsVM.cs" />
+    <Compile Include="Models\Collection\CardsVM.cs" />
     <Compile Include="Models\Collection\CardVM.cs" />
     <Compile Include="Models\Collection\CollectionVM.cs" />
     <Compile Include="Models\Collection\StatsVM.cs" />
@@ -259,6 +265,11 @@
     <Content Include="Views\Collection\Index.cshtml" />
     <Content Include="Views\Collection\CardDetails.cshtml" />
     <Content Include="Views\Sets\EditorTemplates\CardVM.cshtml" />
+    <Content Include="Views\Cards\Cards.cshtml" />
+    <Content Include="Views\Cards\Index.cshtml" />
+    <Content Include="Views\Cards\EditorTemplates\SetVM.cshtml" />
+    <Content Include="Views\Cards\EditorTemplates\CardVM.cshtml" />
+    <Content Include="Views\Collection\Cards.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

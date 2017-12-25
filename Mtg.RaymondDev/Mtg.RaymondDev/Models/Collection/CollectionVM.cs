@@ -7,8 +7,6 @@ namespace Mtg.RaymondDev.Models.Collection
 {
     public class CollectionVM
     {
-        public IEnumerable<CardVM> Cards { get; set; }
-
         public int CardCount { get; set; }
 
         public int UniqueCardCount { get; set; }

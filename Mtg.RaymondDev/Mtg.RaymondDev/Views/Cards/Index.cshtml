@@ -1,0 +1,32 @@
+﻿@model Mtg.RaymondDev.Models.Cards.SetsVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("GetCards", "Cards"))
+{
+    <input type="submit" value="Get cards" />
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Black</th>
+            <th>Blue</th>
+            <th>White</th>
+            <th>Red</th>
+            <th>Green</th>
+            <th>Colorless</th>
+            <th>Multi colored</th>
+        </tr>
+        @Html.EditorFor(m => m.Sets)
+    </table>
+}
+
+<style>
+    th, td {
+        padding-right: 20px;
+    }
+</style>

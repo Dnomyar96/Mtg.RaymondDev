@@ -1,0 +1,16 @@
+﻿@model Mtg.RaymondDev.Models.Cards.SetVM
+
+@Html.HiddenFor(m => m.Id)
+@Html.HiddenFor(m => m.Name)
+
+<tr>
+    <td>@Model.Id</td>
+    <td>@Model.Name</td>
+    <td>@Html.CheckBoxFor(m => m.IncludeBlack)</td>
+    <td>@Html.CheckBoxFor(m => m.IncludeBlue)</td>
+    <td>@Html.CheckBoxFor(m => m.IncludeWhite)</td>
+    <td>@Html.CheckBoxFor(m => m.IncludeRed)</td>
+    <td>@Html.CheckBoxFor(m => m.IncludeGreen)</td>
+    <td>@Html.CheckBoxFor(m => m.IncludeColorless)</td>
+    <td>@Html.CheckBoxFor(m => m.IncludeMulti)</td>
+</tr>

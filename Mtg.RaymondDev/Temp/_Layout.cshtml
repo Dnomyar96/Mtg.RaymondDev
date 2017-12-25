@@ -23,7 +23,6 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Cards", "Index", "Cards")</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (HttpContext.Current.Session["currentUser"] == null)
@@ -32,16 +31,7 @@
                     }
                     else
                     {
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                @(((Mtg.RaymondDev.Helpers.UserHelper)HttpContext.Current.Session["currentUser"]).UserName)
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Stats", "Index", "Collection")</li>
-                                <li>@Html.ActionLink("Cards", "Cards", "Collection")</li>
-                            </ul>
-                        </li>
+                        <li>@Html.ActionLink(((Mtg.RaymondDev.Helpers.UserHelper)HttpContext.Current.Session["currentUser"]).UserName, "Index", "Collection")</li>
                         <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
                     }
                 </ul>

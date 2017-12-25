@@ -78,6 +78,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
+    <Compile Include="Extensions\CardExtensions.cs" />
+    <Compile Include="Extensions\SetExtension.cs" />
     <Compile Include="Migrations\201711231402511_Initial.cs" />
     <Compile Include="Migrations\201711231402511_Initial.Designer.cs">
       <DependentUpon>201711231402511_Initial.cs</DependentUpon>

@@ -6,14 +6,6 @@
     <td>@Model.ManaCost</td>
     <td>@Model.Type</td>
     <td>@Model.Rarity</td>
-    @if (Model.Price.HasValue)
-    {
-        <td>€ @Model.Price.Value</td>
-    }
-    else
-    {
-        <td></td>
-    }
     <td><a href="@Url.Action("EditCardDetails", "Collection", new { id = Model.Id })">@Model.Name</a></td>
     <td>
         @Html.HiddenFor(m => Model.Id)

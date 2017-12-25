@@ -17,6 +17,7 @@
                 <th>Set</th>
                 <th>Amount</th>
                 <th>Unique amount</th>
+                <th>Total worth</th>
             </tr>
             @foreach (var stat in Model.Stats)
             {
@@ -24,6 +25,7 @@
                     <td>@stat.Set</td>
                     <td>@stat.Amount</td>
                     <td>@stat.UniqueAmount</td>
+                    <td>@stat.TotalWorth</td>
             </tr>
             }
         </table>
@@ -31,36 +33,6 @@
     <div class="row">
         &nbsp;
     </div>
-
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Set</th>
-            <th>Amount</th>
-        </tr>
-        @if (Model.Cards != null && Model.Cards.Count() > 0)
-        {
-            foreach (var card in Model.Cards)
-            {
-                <tr>
-                    <td>
-                        @Html.ActionLink(card.Id.ToString(), "EditCardDetails", new { id = card.Id })
-                    </td>
-                    <td>@card.Name</td>
-                    <td>
-                        @Html.ActionLink(card.Set, "SetDetails", "Sets", new { id = card.SetId }, new { })
-                    </td>
-                    <td>@card.Amount</td>
-                    <td>
-                        <a href="@Url.Action("DeleteCard", "Collection", new { id = card.Id })" onclick="return confirm('Are you sure you want to delete this card from your collection?');">
-                            <i class="fa fa-trash-o"></i>
-                        </a>
-                    </td>
-                </tr>
-            }
-        }
-    </table>
 </div>
 
 <style>

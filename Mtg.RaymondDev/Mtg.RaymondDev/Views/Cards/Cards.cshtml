@@ -1,0 +1,34 @@
+﻿@model Mtg.RaymondDev.Models.Cards.CardsVM
+
+@{
+    ViewBag.Title = "Cards";
+}
+
+<h2>Cards</h2>
+
+@using (Html.BeginForm("AddCardsToCollection", "Collection"))
+{
+    <table>
+        <tr>
+            <th>Set</th>
+            <th>Manacost</th>
+            <th>Rarity</th>
+            <th>Name</th>
+            <th>Amount To Add</th>
+        </tr>
+        @Html.EditorFor(m => m.Cards)
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+}
+
+<style>
+    td {
+        padding-right: 20px;
+    }
+</style>

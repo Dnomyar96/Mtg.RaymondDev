@@ -39,24 +39,58 @@ namespace Mtg.RaymondDev.Controllers
 
                 if (collection.Cards != null && collection.Cards.Count > 0)
                 {
+                    model.Stats = collection.Cards.GroupBy(c => c.Card.Set).Select(s => new StatsVM
+                    {
+                        Set = s.Key.Name,
+                        Amount = s.Sum(c => c.Amount),
+                        UniqueAmount = s.Count(),
+                        //TotalWorth = _getTotalWorthOfSet(s.Key)
+                    }).OrderByDescending(m => m.Amount).ToList();
+                }
+
+                return View(model);
+            }
+        }
+
+        public ActionResult Cards()
+        {
+            using (var context = new Context())
+            {
+                var collection = _getCollection(context);
+
+                var model = new CardsVM();
+
+                if (collection.Cards != null && collection.Cards.Count > 0)
+                {
                     model.Cards = collection.Cards.Select(c => new CardVM
                     {
                         Id = c.Card.Id,
                         Name = c.Card.Name,
                         Set = c.Card.Set.Name,
                         SetId = c.Card.Set.Id,
-                        Amount = c.Amount
+                        Amount = c.Amount,
+                        Price = context.CardPricing.FirstOrDefault(cc => cc.Card.Id == c.Card.Id)?.Price
                     }).ToList();
-
-                    model.Stats = collection.Cards.GroupBy(c => c.Card.Set).Select(s => new StatsVM
-                    {
-                        Set = s.Key.Name,
-                        Amount = s.Sum(c => c.Amount),
-                        UniqueAmount = s.Count()
-                    }).OrderByDescending(m => m.Amount);
                 }
 
                 return View(model);
+            }
+        }
+
+        private decimal? _getTotalWorthOfSet(Set set)
+        {
+            using(var context = new Context())
+            {
+                decimal sum = 0;
+                foreach(var card in set.Cards)
+                {
+                    var price = context.CardPricing.FirstOrDefault(c => c.Card.Id == card.Id)?.Price;
+
+                    if (price.HasValue)
+                        sum += price.Value;
+                }
+
+                return sum;
             }
         }
 
@@ -149,7 +183,7 @@ namespace Mtg.RaymondDev.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddCardsToCollection(Models.Sets.SetsVM model)
+        public ActionResult AddCardsToCollection(Models.Cards.CardsVM model)
         {
             using (var context = new Context())
             {
@@ -157,11 +191,11 @@ namespace Mtg.RaymondDev.Controllers
 
                 foreach(var card in model.Cards)
                 {
-                    if (card.AmountToAdd > 0)
+                    if (card.Amount > 0)
                     {
                         if (collection.Cards.Any(c => c.Card.Id == card.Id))
                         {
-                            collection.Cards.Single(c => c.Card.Id == card.Id).Amount += card.AmountToAdd;
+                            collection.Cards.Single(c => c.Card.Id == card.Id).Amount += card.Amount;
                         }
                         else
                         {
@@ -171,7 +205,7 @@ namespace Mtg.RaymondDev.Controllers
                             {
                                 Collection = collection,
                                 Card = dbCard,
-                                Amount = card.AmountToAdd
+                                Amount = card.Amount
                             });
                         }
                     }
@@ -179,7 +213,7 @@ namespace Mtg.RaymondDev.Controllers
 
                 context.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
         }
 

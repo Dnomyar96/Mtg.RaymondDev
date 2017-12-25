@@ -12,5 +12,7 @@ namespace Mtg.RaymondDev.Models.Collection
         public int Amount { get; set; }
 
         public int UniqueAmount { get; set; }
+
+        public decimal? TotalWorth { get; set; }
     }
 }

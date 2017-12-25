@@ -1,0 +1,15 @@
+﻿@model Mtg.RaymondDev.Models.Cards.CardVM
+
+@Html.HiddenFor(m => m.Id)
+@Html.HiddenFor(m => m.Set)
+@Html.HiddenFor(m => m.Name)
+@Html.HiddenFor(m => m.ManaCost)
+@Html.HiddenFor(m => m.Rarity)
+
+<tr>
+    <td>@Model.Set</td>
+    <td>@Model.ManaCost</td>
+    <td>@Model.Rarity</td>
+    <td>@Model.Name</td>
+    <td>@Html.EditorFor(m => Model.Amount)</td>
+</tr>

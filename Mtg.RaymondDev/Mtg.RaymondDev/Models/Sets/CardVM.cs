@@ -21,5 +21,7 @@ namespace Mtg.RaymondDev.Models.Sets
         /// Temporarily added to make adding large quantities of cards to a collection easier
         /// </summary>
         public int AmountToAdd { get; set; }
+
+        public decimal? Price { get; set; }
     }
 }

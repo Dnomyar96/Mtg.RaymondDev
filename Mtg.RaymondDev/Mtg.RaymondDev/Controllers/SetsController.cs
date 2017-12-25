@@ -29,7 +29,8 @@ namespace Mtg.RaymondDev.Controllers
                     ManaCost = c.ManaCost,
                     Type = c.Type,
                     Rarity = c.Rarity,
-                    AmountToAdd = 0
+                    AmountToAdd = 0,
+                    Price = context.CardPricing.FirstOrDefault(cc => cc.Card.Id == c.Id)?.Price
                 }).ToList();
             }
 
