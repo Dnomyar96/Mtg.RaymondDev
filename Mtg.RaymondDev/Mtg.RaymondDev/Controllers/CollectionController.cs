@@ -44,7 +44,7 @@ namespace Mtg.RaymondDev.Controllers
                         Set = s.Key.Name,
                         Amount = s.Sum(c => c.Amount),
                         UniqueAmount = s.Count(),
-                        //TotalWorth = _getTotalWorthOfSet(s.Key)
+                        TotalWorth = _getTotalWorth(s.ToList())
                     }).OrderByDescending(m => m.Amount).ToList();
                 }
 
@@ -77,20 +77,23 @@ namespace Mtg.RaymondDev.Controllers
             }
         }
 
-        private decimal? _getTotalWorthOfSet(Set set)
+        private decimal? _getTotalWorth(IEnumerable<CollectionCard> cards)
         {
             using(var context = new Context())
             {
                 decimal sum = 0;
-                foreach(var card in set.Cards)
+                foreach(var card in cards)
                 {
-                    var price = context.CardPricing.FirstOrDefault(c => c.Card.Id == card.Id)?.Price;
+                    var price = context.CardPricing.FirstOrDefault(c => c.Card.Id == card.Card.Id)?.Price * card.Amount;
 
                     if (price.HasValue)
                         sum += price.Value;
                 }
 
-                return sum;
+                if (sum > 0)
+                    return sum;
+                else
+                    return null;
             }
         }
 
