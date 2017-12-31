@@ -1,0 +1,15 @@
+﻿@model Mtg.RaymondDev.Models.Decks.DecksVM
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Decks</h2>
+
+@foreach (var deck in Model.Decks)
+{
+    <div class="row">
+        <div class="col-lg-1">
+            @Html.ActionLink(deck.Name, "ShowDeck", "Decks", new { id = deck.Id }, new { })
+        </div>
+    </div>
+}

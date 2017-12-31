@@ -87,7 +87,12 @@ namespace Mtg.RaymondDev.Controllers
                     var price = context.CardPricing.FirstOrDefault(c => c.Card.Id == card.Card.Id)?.Price * card.Amount;
 
                     if (price.HasValue)
-                        sum += price.Value;
+                    {
+                        if (price.Value == (decimal)0.20)
+                            sum += (decimal)0.05;
+                        else
+                            sum += price.Value;
+                    }
                 }
 
                 if (sum > 0)
@@ -227,7 +232,7 @@ namespace Mtg.RaymondDev.Controllers
 
             if (collection == null)
             {
-                context.Collections.Add(new Collection { User = user });
+                context.Collections.Add(new Collection { User = user, Type = CollectionType.UserCollection });
                 context.SaveChanges();
 
                 collection = context.Collections.SingleOrDefault(c => c.User.Id == user.Id);

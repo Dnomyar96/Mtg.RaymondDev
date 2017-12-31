@@ -74,7 +74,7 @@ namespace Mtg.RaymondDev.Controllers
                         ManaCost = c.ManaCost,
                         Rarity = c.Rarity,
                         Amount = 0
-                    }).ToList()
+                    }).OrderBy(c => c.Rarity).ToList()
                 };
 
                 return View("Cards", model);

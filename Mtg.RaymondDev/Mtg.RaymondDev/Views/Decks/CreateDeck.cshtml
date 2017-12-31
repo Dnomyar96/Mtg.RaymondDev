@@ -1,0 +1,35 @@
+﻿@model Mtg.RaymondDev.Models.Decks.DeckVM
+@{
+    ViewBag.Title = "CreateDeck";
+}
+
+@using (Html.BeginForm("SaveDeck", "Decks"))
+{
+    <div class="row">
+        <h2>Create deck</h2>
+    </div>
+
+    @Html.HiddenFor(m => m.Id)
+    <div class="row">
+        <div class="col-lg-1">
+            Name
+        </div>
+        <div class="col-lg-3">
+            @Html.EditorFor(m => m.Name)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-1">
+            &nbsp;
+        </div>
+        <div class="col-lg-3">
+            <input type="submit" value="Submit" />
+        </div>
+    </div>
+}
+
+<style>
+    .row {
+        padding-bottom: 5px;
+    }
+</style>

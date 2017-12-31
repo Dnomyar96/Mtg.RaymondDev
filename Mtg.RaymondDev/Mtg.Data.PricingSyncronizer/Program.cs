@@ -20,7 +20,9 @@ namespace Mtg.Data.PricingSyncronizer
             //_hourOfDevestation();
             //_theros();
             //_shadowsOverInnistrad();
-            _unstable();
+            //_unstable();
+            _magic2015();
+            _journeyIntoNyx();
 
             Console.WriteLine("Done");
             Console.ReadLine();
@@ -59,6 +61,16 @@ namespace Mtg.Data.PricingSyncronizer
         private static void _unstable()
         {
             _getSetPricing("http://www.bazaarofmagic.nl/magic/unstable-c-5994.html?page=", 246, "Unstable");
+        }
+
+        private static void _magic2015()
+        {
+            _getSetPricing("http://www.bazaarofmagic.nl/magic/magic-2015-c-3466.html?page=", 195, "Magic 2015 Core Set");
+        }
+
+        private static void _journeyIntoNyx()
+        {
+            _getSetPricing("http://www.bazaarofmagic.nl/magic/journey-into-nyx-c-2872.html?page=", 189, "Journey into Nyx");
         }
 
         private static void _getSetPricing(string baseUrl, int setId, string setName)
@@ -117,7 +129,7 @@ namespace Mtg.Data.PricingSyncronizer
                                     }
                                     else
                                     {
-                                        Console.WriteLine($"{setName}: Skipping {cardName}. Card already has a price.");
+                                        Console.WriteLine($"{setName}: Skipping {cardName}. Card's price hasn't changed.");
                                     }
                                 }
                                 else
