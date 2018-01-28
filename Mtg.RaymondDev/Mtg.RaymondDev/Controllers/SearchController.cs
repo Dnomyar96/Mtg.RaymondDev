@@ -6,6 +6,7 @@ using Mtg.RaymondDev.Models.Search;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -94,6 +95,7 @@ namespace Mtg.RaymondDev.Controllers
                             Name = c.Card.Name,
                             Set = c.Card.Set.Name,
                             ManaCost = c.Card.ManaCost,
+                            ConvertedManaCost = _getConvertedManacost(c.Card.ManaCost),
                             Type = c.Card.Type,
                             Text = c.Card.Text,
                             Amount = c.Amount
@@ -112,6 +114,7 @@ namespace Mtg.RaymondDev.Controllers
                             Name = c.Card.Name,
                             Set = c.Card.Set.Name,
                             ManaCost = c.Card.ManaCost,
+                            ConvertedManaCost = _getConvertedManacost(c.Card.ManaCost),
                             Type = c.Card.Type,
                             Text = c.Card.Text,
                             Amount = c.Amount
@@ -123,12 +126,33 @@ namespace Mtg.RaymondDev.Controllers
 
                 var model = new ResultVM
                 {
-                    Cards = cards,
+                    Cards = cards.OrderBy(c => c.Set).OrderBy(c => c.ConvertedManaCost),
                     CardCount = cards.Count
                 };
 
                 return View("SearchResult", model);
             }
+        }
+
+        private int _getConvertedManacost(string manacost)
+        {
+            var result = Regex.Matches(manacost, "{B}").Count +
+                Regex.Matches(manacost, "{U}").Count +
+                Regex.Matches(manacost, "{G}").Count +
+                Regex.Matches(manacost, "{R}").Count +
+                Regex.Matches(manacost, "{W}").Count;
+
+            int colorless = 0;
+            if(Int32.TryParse(manacost.Substring(1, 2), out colorless))
+            {
+                result += colorless;
+            }
+            else if(Int32.TryParse(manacost.Substring(1, 1), out colorless))
+            {
+                result += colorless;
+            }
+
+            return result;
         }
         
         private Collection _getCollection(Context context)

@@ -13,6 +13,8 @@ namespace Mtg.RaymondDev.Models.Search
 
         public string ManaCost { get; set; }
 
+        public int ConvertedManaCost { get; set; }
+
         public string Type { get; set; }
 
         public string Text { get; set; }

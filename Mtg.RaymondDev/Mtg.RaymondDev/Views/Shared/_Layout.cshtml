@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" />
     <link href="//cdn.jsdelivr.net/npm/keyrune@latest/css/keyrune.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="~/Content/css/main.css" />
+    <link href="~/Content/Mana-master/css/mana.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Mana/css/mana-cost.css" rel="stylesheet" type="text/css" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -62,7 +64,7 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" id="page-content">
         @RenderBody()
         <hr />
         <footer>
@@ -72,6 +74,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/mana-symbols.js")
     @RenderSection("scripts", required: false)
 </body>
 </html>
