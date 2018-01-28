@@ -21,8 +21,12 @@ namespace Mtg.Data.PricingSyncronizer
             //_theros();
             //_shadowsOverInnistrad();
             //_unstable();
-            _magic2015();
-            _journeyIntoNyx();
+            //_magic2015();
+            //_journeyIntoNyx();
+            //_aetherRevolt();
+            //_khansOfTarkir();
+            //_innistrad();
+            _rivalsOfIxalan();
 
             Console.WriteLine("Done");
             Console.ReadLine();
@@ -71,6 +75,26 @@ namespace Mtg.Data.PricingSyncronizer
         private static void _journeyIntoNyx()
         {
             _getSetPricing("http://www.bazaarofmagic.nl/magic/journey-into-nyx-c-2872.html?page=", 189, "Journey into Nyx");
+        }
+
+        private static void _aetherRevolt()
+        {
+            _getSetPricing("http://www.bazaarofmagic.nl/magic/aether-revolt-c-2854.html?page=", 233, "Aether Revolt");
+        }
+
+        private static void _khansOfTarkir()
+        {
+            _getSetPricing("http://www.bazaarofmagic.nl/magic/khans-of-tarkir-c-2870.html?page=", 199, "Khans of Tarkir");
+        }
+
+        private static void _innistrad()
+        {
+            _getSetPricing("http://www.bazaarofmagic.nl/magic/innistrad-c-2888.html?page=", 163, "Innistrad");
+        }
+
+        private static void _rivalsOfIxalan()
+        {
+            _getSetPricing("http://www.bazaarofmagic.nl/magic/rivals-of-ixalan-c-2846.html?page=", 248, "Rivals of Ixalan");
         }
 
         private static void _getSetPricing(string baseUrl, int setId, string setName)
