@@ -6,7 +6,6 @@
     <title>@ViewBag.Title - Magic: The Gathering</title>
     <link rel="stylesheet" href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" />
     <link href="//cdn.jsdelivr.net/npm/keyrune@latest/css/keyrune.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="~/Content/css/main.css" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -25,19 +24,6 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Cards", "Index", "Cards")</li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            Decks <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Decks", "Index", "Decks")</li>
-                            <li>@Html.ActionLink("Create deck", "CreateDeck", "Decks")</li>
-                        </ul>
-                    </li>
-                    @if (HttpContext.Current.Session["currentUser"] != null)
-                    {
-                        <li>@Html.ActionLink("Search", "Index", "Search")</li>
-                    }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (HttpContext.Current.Session["currentUser"] == null)

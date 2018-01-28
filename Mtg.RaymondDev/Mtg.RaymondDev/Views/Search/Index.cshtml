@@ -1,0 +1,31 @@
+﻿@model Mtg.RaymondDev.Models.Search.SearchVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Search</h2>
+
+<div class="row">
+    <div class="col-lg-4">
+        @using (Html.BeginForm("SearchCards", "Search"))
+        {
+            <div class="row">
+                <div class="col-lg-6">Description contains</div>
+                <div class="col-lg-6">@Html.EditorFor(m => m.DescriptionContains)</div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">Type contains</div>
+                <div class="col-lg-6">@Html.EditorFor(m => m.TypeContains)</div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">Color identities</div>
+                <div class="col-lg-6">@Html.ListBoxFor(m => m.ColorIdentities, Model.ColoridentitiesSelectList, new { style = "width: 100%; height: 125px"})</div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6"></div>
+                <div class="col-lg-6"><input type="submit" value="Search" /></div>
+            </div>
+        }
+    </div>
+</div>

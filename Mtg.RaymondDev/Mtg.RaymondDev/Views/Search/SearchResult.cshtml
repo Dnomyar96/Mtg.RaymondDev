@@ -1,0 +1,61 @@
+﻿@model Mtg.RaymondDev.Models.Search.ResultVM
+
+@{
+    ViewBag.Title = "SearchResult";
+}
+
+<h2>SearchResult</h2>
+
+<div class="row">
+    <table>
+        <tr>
+            <th>Card</th>
+            <th>Set</th>
+            <th>Manacost</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Text</th>
+        </tr>
+        @foreach(var card in Model.Cards)
+        {
+            <tr>
+                <td>@card.Name</td>
+                <td>@card.Set</td>
+                <td>@card.ManaCost</td>
+                <td>@card.Type</td>
+                <td>@card.Amount</td>
+                <td>@card.Text</td>
+            </tr>
+        }
+    </table>
+</div>
+
+<style>
+    td {
+        padding-right: 5px;
+        padding-left: 5px;
+        border-right: solid black 1px;
+    }
+
+    th {
+        padding-right: 5px;
+        padding-left: 5px;
+        border-right: solid black 1px;
+    }
+
+    tr {
+        border-bottom: solid black 1px;
+    }
+
+    td:last-of-type {
+        border-right: none;
+    }
+
+    th:last-of-type {
+        border-right: none;
+    }
+
+    tr:last-of-type {
+        border-bottom: none;
+    }
+</style>
