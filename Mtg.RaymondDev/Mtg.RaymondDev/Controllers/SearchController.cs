@@ -89,7 +89,7 @@ namespace Mtg.RaymondDev.Controllers
                 if (searchDescription)
                 {
                     var resultCards = collection.Cards
-                        .Where(cc => cc.Card.Text.Contains(vm.DescriptionContains))
+                        .Where(cc => cc.Card.Text != null && cc.Card.Text.Contains(vm.DescriptionContains))
                         .Select(c => new CardVM
                         {
                             Name = c.Card.Name,
